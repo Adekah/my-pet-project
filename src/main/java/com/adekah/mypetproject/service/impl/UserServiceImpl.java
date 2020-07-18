@@ -26,7 +26,6 @@ public class UserServiceImpl {
         try {
             User user = new User(); 
             user.setEmail(registrationRequest.getEmail());
-            user.setNameSurname(registrationRequest.getNameSurname());
             user.setPassword(bCryptPasswordEncoder.encode(registrationRequest.getPassword()));
             user.setUsername(registrationRequest.getUsername());
             userRepository.save(user);
