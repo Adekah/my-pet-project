@@ -31,3 +31,17 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### ANGULAR ###
+# compiled output
+/webui/dist
+/webui/tmp
+/webui/out-tsc
+
+# dependencies
+/webui/node_modules
+
+# profiling files
+/webui/chrome-profiler-events.json
+/webui/speed-measure-plugin.json
