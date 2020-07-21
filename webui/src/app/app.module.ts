@@ -12,12 +12,14 @@ import { RegisterComponent } from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "./app.routing.module";
+import { NotfoundComponent } from './shared/notfound/notfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
