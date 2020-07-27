@@ -12,13 +12,19 @@ import java.util.Date;
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
-    @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at")
     private Date createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = "created_by", length = 50)
+    private String createdBy;
+
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updateAt;
+    @Column(name = "updated_at")
+    private Date updatedAt;
+
+    @Column(name = "updated_by", length = 50)
+    private String updatedBy;
 
     @Column(name = "is_active")
     private Boolean isActive;

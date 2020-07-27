@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -32,5 +33,9 @@ public class User extends BaseEntity {
 
     @Column(name = "surname", length = 100)
     private String surname;
+
+    @JoinColumn(name = "owner_user_id")
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Quiz> quizzes;
 
 }

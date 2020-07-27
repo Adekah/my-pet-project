@@ -1,0 +1,13 @@
+Quiz 
+	id
+	name
+	explanation
+	number of questions
+	owner
+
+	Base Entity --> created_by
+	Base Entity --> created_at
+	Base Entity --> updated_by
+	Base Entity --> updated_at
+	Base Entity --> is_active
+	
