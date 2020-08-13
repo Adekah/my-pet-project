@@ -7,7 +7,7 @@ import java.awt.print.Pageable;
 
 public interface QuizService {
 
-    QuizDto save(QuizDto quiz);
+    QuizDto create(QuizDto quiz);
 
     QuizDto getById(Long id);
 

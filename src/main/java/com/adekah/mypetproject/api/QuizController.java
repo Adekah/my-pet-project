@@ -28,6 +28,6 @@ public class QuizController {
     @PostMapping
     @ApiOperation(value = "Create Operation", response = QuizDto.class)
     public ResponseEntity<QuizDto> createQuiz(@Valid @RequestBody QuizDto quiz) {
-        return ResponseEntity.ok(quizServiceImpl.save(quiz));
+        return ResponseEntity.ok(quizServiceImpl.create(quiz));
     }
 }
