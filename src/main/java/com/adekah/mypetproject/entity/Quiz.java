@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -31,6 +32,10 @@ public class Quiz extends BaseEntity {
     @JoinColumn(name = "owner_user_id")
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     private User owner;
+
+    @JoinColumn(name = "question_quiz_id")
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Question> questions;
 
 
 }
