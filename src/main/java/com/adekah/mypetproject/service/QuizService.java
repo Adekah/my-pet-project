@@ -2,14 +2,15 @@ package com.adekah.mypetproject.service;
 
 import com.adekah.mypetproject.dto.QuizDto;
 import com.adekah.mypetproject.util.TPage;
-
-import java.awt.print.Pageable;
+import org.springframework.data.domain.Pageable;
 
 public interface QuizService {
 
     QuizDto create(QuizDto quiz);
 
     QuizDto getById(Long id);
+
+    Boolean delete (Long issue);
 
     TPage<QuizDto> getAllPageable(Pageable pageable);
 

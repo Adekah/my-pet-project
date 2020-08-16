@@ -30,4 +30,17 @@ public class QuizController {
     public ResponseEntity<QuizDto> createQuiz(@Valid @RequestBody QuizDto quiz) {
         return ResponseEntity.ok(quizServiceImpl.create(quiz));
     }
+
+
+    @ApiOperation(value = "Delete Quiz Operation", response = boolean.class)
+    public ResponseEntity<Boolean> delete(@PathVariable(value = "id", required = true) Long id) {
+        return ResponseEntity.ok(quizServiceImpl.delete(id));
+    }
+
+    @GetMapping("/{id}")
+    @ApiOperation(value = "Get By Id Operation", response = QuizDto.class)
+    public ResponseEntity<QuizDto> getById(@PathVariable(value = "id", required = true) Long id) {
+        QuizDto quizDto = quizServiceImpl.getById(id);
+        return ResponseEntity.ok(quizDto);
+    }
 }

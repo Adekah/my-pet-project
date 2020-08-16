@@ -8,9 +8,11 @@ import com.adekah.mypetproject.repository.UserRepository;
 import com.adekah.mypetproject.service.QuizService;
 import com.adekah.mypetproject.util.TPage;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
+import java.util.Arrays;
 import java.util.Date;
 
 @Service
@@ -41,14 +43,30 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public QuizDto getById(Long id) {
-        return null;
+    public Boolean delete(Long quizId) {
+        quizRepository.deleteById(quizId);
+        return true;
     }
 
     @Override
     public TPage<QuizDto> getAllPageable(Pageable pageable) {
-        return null;
+        Page<Quiz> data = quizRepository.findAll(pageable);
+        TPage page = new TPage<QuizDto>();
+        QuizDto[] dtos = modelMapper.map(data.getContent(), QuizDto[].class);
+        page.setStat(data, Arrays.asList(dtos));
+        return page;
+
     }
+
+    
+
+    @Override
+    public QuizDto getById(Long id) {
+        Quiz quiz = quizRepository.getOne(id);
+        return modelMapper.map(quiz, QuizDto.class);
+    }
+
+
 
     @Override
     public QuizDto getByName(String name) {
