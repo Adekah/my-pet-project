@@ -3,9 +3,11 @@ package com.adekah.mypetproject.api;
 import com.adekah.mypetproject.dto.QuizDto;
 import com.adekah.mypetproject.service.impl.QuizServiceImpl;
 import com.adekah.mypetproject.util.ApiPaths;
+import com.adekah.mypetproject.util.TPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,4 +45,19 @@ public class QuizController {
         QuizDto quizDto = quizServiceImpl.getById(id);
         return ResponseEntity.ok(quizDto);
     }
+
+//    @GetMapping("/detail/{id}")
+//    @ApiOperation(value = "Get By Id With Details", response = QuizDto.class)
+//    public ResponseEntity<QuizDto> getByIdWithDetails(@PathVariable(value = "id", required = true) Long id) {
+//        QuizDto detailDto = quizServiceImpl.getByIdWithDetails(id);
+//        return ResponseEntity.ok(detailDto);
+//    }
+
+    @GetMapping("/pagination")
+    @ApiOperation(value = "Get By Pagination Operation", response = QuizDto.class)
+    public ResponseEntity<TPage<QuizDto>> getAllByPagination(Pageable pageable) {
+        TPage<QuizDto> data = quizServiceImpl.getAllPageable(pageable);
+        return ResponseEntity.ok(data);
+    }
+
 }

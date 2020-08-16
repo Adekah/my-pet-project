@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -17,15 +18,19 @@ public class QuizDto {
     @ApiModelProperty(value = "Explanation")
     private String explanation;
 
-    @ApiModelProperty(required = true,value = "Name")
+    @ApiModelProperty(required = true, value = "Name")
     private String name;
 
-    @ApiModelProperty(required = true,value = "Number Of Questions")
+    @ApiModelProperty(required = true, value = "Number Of Questions")
     private byte numberOfQuestions;
 
     @NotNull
-    @ApiModelProperty(required = true,value = "OwnerId")
+    @ApiModelProperty(required = true, value = "OwnerId")
     private Long ownerId;
-    @ApiModelProperty(required = true,value = "Quiz Owner Id")
+
+    @ApiModelProperty(required = true, value = "Quiz Owner Id")
     private UserDto owner;
+
+    @ApiModelProperty(required = true, value = "Quiz Questions")
+    private List<QuestionDto> quizQuestions;
 }

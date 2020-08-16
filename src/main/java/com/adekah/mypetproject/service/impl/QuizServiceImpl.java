@@ -1,5 +1,6 @@
 package com.adekah.mypetproject.service.impl;
 
+import com.adekah.mypetproject.dto.QuestionDto;
 import com.adekah.mypetproject.dto.QuizDto;
 import com.adekah.mypetproject.entity.Quiz;
 import com.adekah.mypetproject.entity.User;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class QuizServiceImpl implements QuizService {
@@ -23,7 +25,7 @@ public class QuizServiceImpl implements QuizService {
     private final UserRepository userRepository;
     Date currentUtilDate = new Date();
 
-    public QuizServiceImpl(QuizRepository quizRepository, ModelMapper modelMapper, UserRepository userRepository) {
+    public QuizServiceImpl(QuizRepository quizRepository,ModelMapper modelMapper, UserRepository userRepository) {
         this.quizRepository = quizRepository;
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
@@ -58,15 +60,19 @@ public class QuizServiceImpl implements QuizService {
 
     }
 
-    
-
     @Override
     public QuizDto getById(Long id) {
         Quiz quiz = quizRepository.getOne(id);
         return modelMapper.map(quiz, QuizDto.class);
     }
 
-
+//    public QuizDto getByIdWithDetails(Long id) {
+//        Quiz quiz = quizRepository.getOne(id);
+//        QuizDto quizDto = modelMapper.map(quiz, QuizDto.class);
+//        List<QuestionDto> questionDtos = denemeeee.getByQuizId(quiz.getId());
+//        quizDto.setQuizQuestions(questionDtos);
+//        return quizDto;
+//    }
 
     @Override
     public QuizDto getByName(String name) {
