@@ -10,7 +10,7 @@ public interface QuizService {
 
     QuizDto getById(Long id);
 
-    Boolean delete (Long issue);
+    Boolean delete (Long id);
 
     TPage<QuizDto> getAllPageable(Pageable pageable);
 

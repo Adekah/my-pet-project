@@ -31,7 +31,7 @@ public class Question extends BaseEntity {
 
     @JoinColumn(name = "question_quiz_id")
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
-    private Quiz question_quiz;
+    private Quiz questionQuiz;
 
     @JoinColumn(name = "answer_question_id")
     @OneToMany(fetch = FetchType.LAZY)

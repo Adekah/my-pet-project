@@ -7,4 +7,8 @@ public class ApiPaths {
     public static final class QuizController {
         public static final String CTRL = BASE_PATH + "/quiz";
     }
+
+    public static final class QuestionController {
+        public static final String CTRL = BASE_PATH + "/question";
+    }
 }
