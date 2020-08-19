@@ -27,12 +27,11 @@ public class QuizController {
         this.modelMapper = modelMapper;
     }
 
-    @PostMapping
+    @RequestMapping(method = RequestMethod.POST,value="/create")
     @ApiOperation(value = "Create Quiz Operation", response = QuizDto.class)
     public ResponseEntity<QuizDto> createQuiz(@Valid @RequestBody QuizDto quiz) {
         return ResponseEntity.ok(quizServiceImpl.create(quiz));
     }
-
 
     @ApiOperation(value = "Delete Quiz Operation", response = boolean.class)
     public ResponseEntity<Boolean> delete(@PathVariable(value = "id", required = true) Long id) {

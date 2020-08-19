@@ -31,7 +31,7 @@ public class AccountController {
     @Autowired
     private UserServiceImpl userService;
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST,value="/login")
     @ApiOperation(value="Login operation",response=TokenResponse.class)
     public ResponseEntity<TokenResponse> login(@RequestBody LoginRequest request) throws AuthenticationException {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));

@@ -26,9 +26,9 @@ public class QuestionController {
         this.questionServiceImpl = questionServiceImpl;
     }
 
-    @PostMapping
     @ApiOperation(value = "Create Question Operation", response = QuestionDto.class)
-    public ResponseEntity<QuestionDto> createQuiz(@Valid @RequestBody QuestionDto question) {
+    @RequestMapping(method = RequestMethod.POST,value="/create")
+    public ResponseEntity<QuestionDto> createQuestion(@Valid @RequestBody QuestionDto question) {
         return ResponseEntity.ok(questionServiceImpl.create(question));
     }
 

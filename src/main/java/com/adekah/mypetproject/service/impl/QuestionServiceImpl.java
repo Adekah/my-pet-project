@@ -1,8 +1,10 @@
 package com.adekah.mypetproject.service.impl;
 
 import com.adekah.mypetproject.dto.QuestionDto;
+import com.adekah.mypetproject.entity.Answer;
 import com.adekah.mypetproject.entity.Question;
 import com.adekah.mypetproject.entity.Quiz;
+import com.adekah.mypetproject.repository.AnswerRepository;
 import com.adekah.mypetproject.repository.QuestionRepository;
 import com.adekah.mypetproject.repository.QuizRepository;
 import com.adekah.mypetproject.service.QuestionService;
@@ -19,17 +21,19 @@ public class QuestionServiceImpl implements QuestionService {
     private final ModelMapper modelMapper;
     private final QuestionRepository questionRepository;
     private final QuizRepository quizRepository;
+    private final AnswerRepository answerRepository;
 
-    public QuestionServiceImpl(ModelMapper modelMapper, QuestionRepository questionRepository, QuizRepository quizRepository) {
+    public QuestionServiceImpl(ModelMapper modelMapper, QuestionRepository questionRepository, QuizRepository quizRepository, AnswerRepository answerRepository) {
         this.modelMapper = modelMapper;
         this.questionRepository = questionRepository;
         this.quizRepository = quizRepository;
+        this.answerRepository = answerRepository;
     }
 
     Date currentUtilDate = new Date();
 
     @Override
-    public QuestionDto create(QuestionDto question) {
+    public QuestionDto create(QuestionDto question,Answer answer) {
         Question q = modelMapper.map(question, Question.class);
         q.setCreatedAt(currentUtilDate);
         Quiz quiz = quizRepository.getOne(question.getQuizId());
