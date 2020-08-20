@@ -5,7 +5,7 @@ import com.adekah.mypetproject.dto.QuizDto;
 import com.adekah.mypetproject.entity.Answer;
 
 public interface QuestionService {
-    QuestionDto create(QuestionDto question, Answer answer);
+    QuestionDto create(QuestionDto question);
 
     QuestionDto getById(Long id);
 
