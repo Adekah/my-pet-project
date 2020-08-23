@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AnswerService {
 
-    List<AnswerDto> create(List<AnswerDto> answerDto);
+   void  create(List<AnswerDto> answerDto);
 }

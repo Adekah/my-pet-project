@@ -24,11 +24,13 @@ public class AnswerServiceImpl implements AnswerService {
     Date currentUtilDate = new Date();
 
     @Override
-    public List<AnswerDto> create(List<AnswerDto> answerDto) {
-        Answer a = modelMapper.map(answerDto, Answer.class);
-        a.setCreatedAt(currentUtilDate);
-        a.setIsActive(true);
-        a = answerRepository.save(a);
-        return answerDto;
+    public void create(List<AnswerDto> answerDtoList) {
+
+        for(AnswerDto answerDto:answerDtoList){
+            Answer answer = modelMapper.map(answerDtoList, Answer.class);
+            answer.setCreatedAt(currentUtilDate);
+            answer.setIsActive(true);
+            answer = answerRepository.save(answer);
+        }
     }
 }
