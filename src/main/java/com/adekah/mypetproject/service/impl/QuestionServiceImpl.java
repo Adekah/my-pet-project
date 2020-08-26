@@ -45,7 +45,7 @@ public class QuestionServiceImpl implements QuestionService {
         q = questionRepository.save(q);
 
 //        List<AnswerDto> answerDto =question.getQuestionAnswers();
-
+//        question.setQuestionAnswers( sadasdadd  q.getId());
         answerServiceImpl.create(question.getQuestionAnswers());
 
 
