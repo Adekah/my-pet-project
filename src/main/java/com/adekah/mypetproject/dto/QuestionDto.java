@@ -26,7 +26,7 @@ public class QuestionDto {
     @ApiModelProperty(required = true, value = "QuestionImage")
     private String questionImage;
 
-    @NotNull
+
     @ApiModelProperty(required = true, value = "QuizId")
     private Long quizId;
 
