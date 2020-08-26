@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -29,6 +30,7 @@ public class Question extends BaseEntity {
     @Column(name = "question_image", length = 1000)
     private String questionImage;
 
+    @NotNull
     @JoinColumn(name = "question_quiz_id")
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     private Quiz questionQuiz;

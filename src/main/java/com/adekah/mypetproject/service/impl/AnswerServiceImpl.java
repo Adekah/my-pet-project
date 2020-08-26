@@ -27,7 +27,7 @@ public class AnswerServiceImpl implements AnswerService {
     public void create(List<AnswerDto> answerDtoList) {
 
         for(AnswerDto answerDto:answerDtoList){
-            Answer answer = modelMapper.map(answerDtoList, Answer.class);
+            Answer answer = modelMapper.map(answerDto, Answer.class);
             answer.setCreatedAt(currentUtilDate);
             answer.setIsActive(true);
             answer = answerRepository.save(answer);
