@@ -7,19 +7,20 @@ import {AuthGuard} from './security/auth.guard';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './security/jwt.interceptor';
 import {ErrorInterceptor} from './security/authentication.interceptor';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app.routing.module';
-import { NotfoundComponent } from './shared/notfound/notfound.component';
-import { AppLayoutComponent } from './_layout/app-layout/app-layout.component';
-import { HeaderComponent } from './_layout/header/header.component';
-import { FooterComponent } from './_layout/footer/footer.component';
-import { SidebarComponent } from './_layout/sidebar/sidebar.component';
+import {NotfoundComponent} from './shared/notfound/notfound.component';
+import {AppLayoutComponent} from './_layout/app-layout/app-layout.component';
+import {HeaderComponent} from './_layout/header/header.component';
+import {FooterComponent} from './_layout/footer/footer.component';
+import {SidebarComponent} from './_layout/sidebar/sidebar.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {BsDropdownModule} from "ngx-bootstrap";
+import {BsDropdownModule, ModalModule} from "ngx-bootstrap";
+import {QuizModule} from "./pages/quiz/quiz.module";
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -42,6 +43,7 @@ export const createTranslateLoader = (http: HttpClient) => {
     FormsModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
@@ -51,7 +53,9 @@ export const createTranslateLoader = (http: HttpClient) => {
         useFactory: createTranslateLoader,
         deps: [HttpClient]
       }
-    })  ],
+    }),
+    QuizModule
+  ],
   providers: [
     AuthenticationService,
     AuthGuard,

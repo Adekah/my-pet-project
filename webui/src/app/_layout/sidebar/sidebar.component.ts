@@ -1,5 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import {getLViewChild} from "@angular/core/src/render3/node_manipulation";
+import {QuizComponent} from "../../pages/quiz/quiz.component";
 
 @Component({
   selector: 'app-sidebar',
@@ -11,8 +14,15 @@ export class SidebarComponent {
   showMenu: string = '';
   pushRightClass: string = 'push-right';
   collapseClass: string = 'collapsed';
+  // modalRef: BsModalRef;
 
-  constructor(public router: Router) {
+  @ViewChild('createQuiz') createQuizModal: QuizComponent;
+
+
+
+
+
+  constructor(public router: Router, private modalService: BsModalService) {
     this.router.events.subscribe(val => {
       if (
         val instanceof NavigationEnd &&
@@ -25,6 +35,21 @@ export class SidebarComponent {
     this.showMenu = 'dashboard';
   }
 
+  // createCity(): void {
+  //   this.publicationService.getAllPublicationDetails(0, 10)
+  //     .subscribe((result: PublicationDetails) => {
+  //       this.createPublicationModal.show(result);
+  //     });
+  // }
+
+
+  openModal(template: TemplateRef<any>) {
+        this.createQuizModal.show();
+  }
+
+
+
+
   eventCalled() {
     this.isActive = !this.isActive;
   }
@@ -36,6 +61,9 @@ export class SidebarComponent {
       this.showMenu = element;
     }
   }
+
+
+
 
   isToggled(): boolean {
     const dom: Element = document.querySelector('aside');
