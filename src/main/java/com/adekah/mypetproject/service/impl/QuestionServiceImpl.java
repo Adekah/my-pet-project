@@ -63,18 +63,6 @@ public class QuestionServiceImpl implements QuestionService {
         return Arrays.asList(modelMapper.map(questionRepository.findByQuestionQuizId(id), QuestionDto[].class));
     }
 
-
-//    @Override
-//    public List<IssueHistoryDto> getByIssueId(Long id) {
-//        return Arrays.asList(modelMapper.map(issueHistoryRepository.getByIssueIdOrderById(id), IssueHistoryDto[].class));
-//    }
-//
-
-//    public List<UserDto> getAll() {
-//        List<User> data = userRepository.findAll();
-//        return Arrays.asList(modelMapper.map(data, UserDto[].class));
-//    }
-
     @Override
     public Boolean delete(Long questionId) {
         questionRepository.deleteById(questionId);
