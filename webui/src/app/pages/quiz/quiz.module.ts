@@ -4,11 +4,13 @@ import { QuizComponent } from './quiz.component';
 import {QuizRoutingModule} from './quiz.routing.module';
 import {TranslateModule} from "@ngx-translate/core";
 import {ReactiveFormsModule} from "@angular/forms";
+import { CreateQuizModalComponent } from './create-quiz-modal/create-quiz-modal.component';
 
 @NgModule({
-  declarations: [QuizComponent],
+  declarations: [QuizComponent, CreateQuizModalComponent],
   exports: [
-    QuizComponent
+    QuizComponent,
+    CreateQuizModalComponent
   ],
   imports: [
     CommonModule,
