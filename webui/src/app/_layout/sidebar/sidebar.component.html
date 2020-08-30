@@ -11,7 +11,7 @@
           <span class="nav-icon material-icons">public</span>Dashboard</a>
       </li>
       <li class="active">
-        <a (click)="openModal(createQuizModalComponent)">
+        <a (click)="openModal(createQuiz)">
           <span><span class="nav-icon material-icons">create</span> &nbsp;&nbsp;&nbsp;New Quiz</span>
         </a>
       </li>
@@ -24,8 +24,7 @@
   </nav>
 </aside>
 
-
-<app-create-quiz-modal #createQuizModalComponent></app-create-quiz-modal>
+<app-quiz #createQuiz></app-quiz>
 
 
 
