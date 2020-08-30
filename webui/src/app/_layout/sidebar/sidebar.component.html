@@ -11,7 +11,7 @@
           <span class="nav-icon material-icons">public</span>Dashboard</a>
       </li>
       <li class="active">
-        <a (click)="openModal(createQuizModal)">
+        <a routerLink="/quiz/create" routerLinkActive="active">
           <span><span class="nav-icon material-icons">create</span> &nbsp;&nbsp;&nbsp;New Quiz</span>
         </a>
       </li>
@@ -24,8 +24,6 @@
   </nav>
 </aside>
 
-
-<app-create-quiz-modal #createQuizModal></app-create-quiz-modal>
 
 
 
