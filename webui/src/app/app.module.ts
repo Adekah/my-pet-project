@@ -21,6 +21,8 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BsDropdownModule, ModalModule} from "ngx-bootstrap";
 import {QuizModule} from "./pages/quiz/quiz.module";
+import {ApiService} from "./services/api.service";
+import {QuizService} from "./services/shared/quiz.service";
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -54,9 +56,9 @@ export const createTranslateLoader = (http: HttpClient) => {
         deps: [HttpClient]
       }
     }),
-    QuizModule
   ],
-  providers: [
+  providers: [ApiService,
+    QuizService,
     AuthenticationService,
     AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

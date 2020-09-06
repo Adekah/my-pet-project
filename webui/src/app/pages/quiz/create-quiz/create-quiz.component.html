@@ -1,28 +1,26 @@
-
-  <div class="content-wrapper">
-    <form [formGroup]="quizForm" (ngSubmit)="saveQuiz()">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label class="badge">Quiz Name</label>
-            <input type="text" formControlName="description" class="form-control"/>
-          </div>
-        </div>
-        <div class="col-md-8">
-          <div class="form-group">
-            <label class="badge">Quiz Description</label>
-            <textarea placeholder="Ex. It makes me feel..." formControlName="description" class="form-control"></textarea>
-          </div>
+<div class="content-wrapper">
+  <form [formGroup]="quizForm" (ngSubmit)="saveQuiz()">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="badge">Quiz Name</label>
+          <input type="text" formControlName="name" class="form-control"/>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6"></div>
-        <div class="col-md-6">
-          <div class="pull-right">
-            <button type="button" class="btn btn-primary">Save Quiz</button>
-          </div>
+      <div class="col-md-8">
+        <div class="form-group">
+          <label class="badge">Quiz Description</label>
+          <textarea placeholder="Ex. It makes me feel..." formControlName="explanation" class="form-control"></textarea>
         </div>
       </div>
-    </form>
-  </div>
-
+    </div>
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-6">
+        <div class="pull-right">
+          <button type="submit" class="btn btn-primary">Create Quiz</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

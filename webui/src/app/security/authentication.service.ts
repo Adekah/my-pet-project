@@ -13,12 +13,14 @@ export class AuthenticationService {
       .pipe(map(user => {
         if (user && user.token) {
           localStorage.setItem('currentUser', JSON.stringify(user));
+          console.log(user)
         }
         return user;
       }));
   }
 
   register(registerData) {
+    registerData.username = registerData.email.substr(0, registerData.email.indexOf('@'))
     return this.http.post<any>( environment.API_BASE_PATH + '/token/register', registerData)
       .pipe(map(resp => {
         return resp;
