@@ -23,6 +23,8 @@ import {BsDropdownModule, ModalModule} from "ngx-bootstrap";
 import {QuizModule} from "./pages/quiz/quiz.module";
 import {ApiService} from "./services/api.service";
 import {QuizService} from "./services/shared/quiz.service";
+import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -47,6 +49,8 @@ export const createTranslateLoader = (http: HttpClient) => {
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     RouterModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({

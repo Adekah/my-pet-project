@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {QuizService} from "../../../services/shared/quiz.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-create-quiz',
@@ -9,9 +10,11 @@ import {QuizService} from "../../../services/shared/quiz.service";
 })
 export class CreateQuizComponent implements OnInit {
   quizForm: FormGroup;
+  submitted = false;
 
   constructor(private quizService: QuizService,
-              private formBuilder: FormBuilder,) {
+              private formBuilder: FormBuilder,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -21,12 +24,31 @@ export class CreateQuizComponent implements OnInit {
     })
   }
 
+  get f() {
+    return this.quizForm.controls
+  }
+
   saveQuiz() {
+    this.submitted = true;
     if (!this.quizForm.valid) {
       return;
     } else {
-      this.quizService.createQuiz(this.quizForm.value).subscribe()
+      this.quizService.createQuiz(this.quizForm.value).subscribe(
+        response => {
+          this.resetForm();
+        }
+      )
     }
+  }
+
+  resetForm() {
+    this.showToastr()
+    this.quizForm.reset();
+    this.submitted = false;
+  }
+
+  showToastr() {
+    this.toastr.show('I am a standard toast');
   }
 
 }
