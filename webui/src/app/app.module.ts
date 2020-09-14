@@ -44,13 +44,13 @@ export const createTranslateLoader = (http: HttpClient) => {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({timeOut: 3000, progressAnimation: 'decreasing', progressBar: true}),
     FormsModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     RouterModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({

@@ -11,6 +11,7 @@ import {ToastrService} from "ngx-toastr";
 export class CreateQuizComponent implements OnInit {
   quizForm: FormGroup;
   submitted = false;
+  isSuccess = false;
 
   constructor(private quizService: QuizService,
               private formBuilder: FormBuilder,
@@ -35,20 +36,30 @@ export class CreateQuizComponent implements OnInit {
     } else {
       this.quizService.createQuiz(this.quizForm.value).subscribe(
         response => {
-          this.resetForm();
+          if (response === true) {
+            this.resetForm();
+          } else {
+            this.showToastr(false);
+          }
+
         }
       )
     }
   }
 
   resetForm() {
-    this.showToastr()
+    this.showToastr(true);
     this.quizForm.reset();
     this.submitted = false;
   }
 
-  showToastr() {
-    this.toastr.show('I am a standard toast');
+  showToastr(isSuccess) {
+    if (isSuccess == true) {
+      this.toastr.success('Quiz Created', 'Success');
+    } else {
+      this.toastr.error('Error', 'Error');
+    }
+
   }
 
 }
