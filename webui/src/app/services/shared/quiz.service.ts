@@ -22,10 +22,10 @@ export class QuizService {
     return this.apiService.post(this.QUIZ_PATH, quiz).pipe(map(
       res => {
         if (res) {
-          return res;
+          return true;
         } else {
           console.log(res);
-          return {};
+          return false;
         }
       }
     ));
