@@ -1,0 +1,77 @@
+<hr>
+
+
+
+<div class="content-wrapper">
+  <form [formGroup]="questionForm" (ngSubmit)="saveQuestion()">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="badge">Question 1</label>
+          <input type="text" formControlName="name" class="form-control"
+                 [ngClass]="{'is-invalid': submitted &&f.name.errors}"/>
+          <div *ngIf="f.name.errors" class="invalid-feedback">
+            <div *ngIf="submitted && f.name.errors.required">{{'Question is required'| translate}}</div>
+            <div *ngIf="submitted && f.name.errors.minLength">{{'Question should be min 5 char'| translate}}</div>
+            xxx
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="badge">Option 1&nbsp;&nbsp;</label>
+          <input type="radio" name="isTrueAnswer" value="True Answer">
+          <input type="text" formControlName="name" class="form-control"
+                 [ngClass]="{'is-invalid': submitted &&f.name.errors}"/>
+          <div *ngIf="f.name.errors" class="invalid-feedback">
+            <div *ngIf="submitted && f.name.errors.required">{{'Quiz Name is required'| translate}}</div>
+            <div *ngIf="submitted && f.name.errors.minLength">{{'Quiz Name should be min 4 char'| translate}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="badge">Option 2&nbsp;&nbsp;</label>
+          <input type="radio" name="isTrueAnswer" value="True Answer">
+          <input type="text" formControlName="name" class="form-control"
+                 [ngClass]="{'is-invalid': submitted &&f.name.errors}"/>
+          <div *ngIf="f.name.errors" class="invalid-feedback">
+            <div *ngIf="submitted && f.name.errors.required">{{'Quiz Name is required'| translate}}</div>
+            <div *ngIf="submitted && f.name.errors.minLength">{{'Quiz Name should be min 4 char'| translate}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="badge">Option 3</label>
+          <input type="radio" name="isTrueAnswer" value="True Answer">
+          <input type="text" formControlName="name" class="form-control"
+                 [ngClass]="{'is-invalid': submitted &&f.name.errors}"/>
+          <div *ngIf="f.name.errors" class="invalid-feedback">
+            <div *ngIf="submitted && f.name.errors.required">{{'Quiz Name is required'| translate}}</div>
+            <div *ngIf="submitted && f.name.errors.minLength">{{'Quiz Name should be min 4 char'| translate}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="badge">Option 4</label>
+          <input type="radio" name="isTrueAnswer" value="True Answer">
+          <input type="text" formControlName="name" class="form-control"
+                 [ngClass]="{'is-invalid': submitted &&f.name.errors}"/>
+          <div *ngIf="f.name.errors" class="invalid-feedback">
+            <div *ngIf="submitted && f.name.errors.required">{{'Quiz Name is required'| translate}}</div>
+            <div *ngIf="submitted && f.name.errors.minLength">{{'Quiz Name should be min 4 char'| translate}}</div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <button type="submit" class="btn btn-primary">New Question</button>
+    <button type="submit" class="btn btn-success">Save Quiz</button>
+  </form>
+</div>
