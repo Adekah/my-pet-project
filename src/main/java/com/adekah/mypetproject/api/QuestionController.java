@@ -28,7 +28,7 @@ public class QuestionController {
 
     @ApiOperation(value = "Create Question Operation", response = QuestionDto.class)
     @RequestMapping(method = RequestMethod.POST,value="/create")
-    public ResponseEntity<QuestionDto> createQuestion(@Valid @RequestBody QuestionDto question) {
+    public ResponseEntity<List<QuestionDto>> createQuestion(@Valid @RequestBody List<QuestionDto> question) {
         return ResponseEntity.ok(questionServiceImpl.create(question));
     }
 

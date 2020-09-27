@@ -35,20 +35,25 @@ public class QuestionServiceImpl implements QuestionService {
 
     Date currentUtilDate = new Date();
 
+
     @Override
-    public QuestionDto create(QuestionDto question) {
-        Question q = modelMapper.map(question, Question.class);
-        q.setCreatedAt(currentUtilDate);
-        Quiz quiz = quizRepository.getOne(question.getQuizId());
-        q.setQuestionQuiz(quiz);
-        q.setIsActive(true);
-        q = questionRepository.save(q);
-        for(AnswerDto answerDto:question.getQuestionAnswers()){
-            AnswerDto answers = modelMapper.map(answerDto, AnswerDto.class);
-            answers.setQuestionId(q.getId());
+    public List<QuestionDto> create(List<QuestionDto> question) {
+        for (QuestionDto questionDto : question) {
+            Question q = modelMapper.map(question, Question.class);
+            q.setCreatedAt(currentUtilDate);
+            Quiz quiz = quizRepository.getOne(questionDto.getQuizId());
+            q.setQuestionText(questionDto.getQuestionText());
+            q.setQuestionQuiz(quiz);
+            q.setIsActive(true);
+            q = questionRepository.save(q);
+            for (AnswerDto answerDto : questionDto.getQuestionAnswers()) {
+                AnswerDto answers = modelMapper.map(answerDto, AnswerDto.class);
+                answers.setQuestionId(q.getId());
+            }
+            answerServiceImpl.create(questionDto.getQuestionAnswers());
+            questionDto.setId(q.getId());
+
         }
-        answerServiceImpl.create(question.getQuestionAnswers());
-        question.setId(q.getId());
         return question;
     }
 
