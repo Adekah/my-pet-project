@@ -11,7 +11,6 @@ import {ToastrService} from "ngx-toastr";
 export class CreateQuizComponent implements OnInit {
   quizForm: FormGroup;
   submitted = false;
-  isSuccess = false;
 
   constructor(private quizService: QuizService,
               private formBuilder: FormBuilder,
