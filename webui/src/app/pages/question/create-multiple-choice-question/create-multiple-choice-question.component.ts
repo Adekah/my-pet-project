@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {QuestionService} from "../../../services/shared/question.service";
 import {ToasterService} from "ngx-toaster/src/lib";
 
@@ -13,11 +13,15 @@ export class CreateMultipleChoiceQuestionComponent implements OnInit {
   submitted = false;
 
   constructor(private questionService: QuestionService,
-              private formBuilder: FormBuilder,
-              private toastr: ToasterService) {
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.questionForm = this.formBuilder.group({
+      'question': [null, [Validators.required, Validators.minLength(8), Validators.maxLength(500)]],
+      'optionOne': [null, [Validators.required, Validators.minLength(2)]],
+      'optionTwo': [null, [Validators.required, Validators.minLength(2)]]
+    })
   }
 
   get f() {
