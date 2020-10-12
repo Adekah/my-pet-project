@@ -20,11 +20,11 @@ import {SidebarComponent} from './_layout/sidebar/sidebar.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BsDropdownModule, ModalModule} from "ngx-bootstrap";
-import {QuizModule} from "./pages/quiz/quiz.module";
 import {ApiService} from "./services/api.service";
 import {QuizService} from "./services/shared/quiz.service";
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {DynamicComponentService} from "./services/dynamicComponent.service";
 
 export const createTranslateLoader = (http: HttpClient) => {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,7 +40,7 @@ export const createTranslateLoader = (http: HttpClient) => {
     AppLayoutComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +65,7 @@ export const createTranslateLoader = (http: HttpClient) => {
     QuizService,
     AuthenticationService,
     AuthGuard,
+    DynamicComponentService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},],
   bootstrap: [AppComponent]

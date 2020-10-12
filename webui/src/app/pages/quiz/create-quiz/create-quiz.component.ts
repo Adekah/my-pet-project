@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ComponentFactoryResolver, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {QuizService} from "../../../services/shared/quiz.service";
 import {ToastrService} from "ngx-toastr";
+import {DynamicComponentService} from "../../../services/dynamicComponent.service";
 
 @Component({
   selector: 'app-create-quiz',
@@ -12,9 +13,12 @@ export class CreateQuizComponent implements OnInit {
   quizForm: FormGroup;
   submitted = false;
 
+
   constructor(private quizService: QuizService,
               private formBuilder: FormBuilder,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              public dynamicComponent: DynamicComponentService,
+              public viewContainerRef: ViewContainerRef) {
   }
 
   ngOnInit() {
@@ -22,6 +26,11 @@ export class CreateQuizComponent implements OnInit {
       'explanation': [null, [Validators.required, Validators.minLength(2), Validators.maxLength(500)]],
       'name': [null, [Validators.required, Validators.minLength(4)]]
     })
+  }
+
+  add() {
+    this.dynamicComponent.setRootViewContainerRef(this.viewContainerRef);
+    this.dynamicComponent.addDynamicComponent()
   }
 
   get f() {

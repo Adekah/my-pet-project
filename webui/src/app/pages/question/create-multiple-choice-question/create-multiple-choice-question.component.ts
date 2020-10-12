@@ -27,16 +27,6 @@ export class CreateMultipleChoiceQuestionComponent implements OnInit {
     return this.questionForm.controls
   }
 
-  // addCreds() {
-  //   const creds = this.form.controls.credentials as FormArray;
-  //   creds.push(this.fb.group({
-  //     action: '',
-  //     name: '',
-  //     label: {disabled:true, value: ""}
-  //   }));
-  // }
-
-
   saveQuestion() {
     this.submitted = true;
     if (!this.questionForm.valid) {
